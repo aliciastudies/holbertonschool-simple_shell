@@ -29,7 +29,7 @@ int main(void)
                 i = 0;
                 while (i < 16 && tok != NULL)
                 {
-                        command[i] = strdup(tok);
+                        command[i] = tok;
                         tok = strtok(NULL, " \t\n\r");
                         i = i + 1;
                 }
