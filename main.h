@@ -21,5 +21,7 @@ int execute_builtin_cmd(char *tokenised_array);
 int print_env();
 int exit_shell();
 extern char **environ;
+char *_getenv(const char *name);
+char *find_executable_in_path(char *command);
 
 #endif
