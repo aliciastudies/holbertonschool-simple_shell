@@ -10,7 +10,8 @@ int main(void)
         pid_t child;
         char *command[16], *tok, *lineptr = NULL;
         size_t i;
-	char *read;
+	size_t n;
+	ssize_t read;
         int status;
 
         while (1)
