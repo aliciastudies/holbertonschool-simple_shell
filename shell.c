@@ -20,12 +20,13 @@ int main(void)
 		{
 			printf("$ ");
 		}
+		fflush(stdin);
 		read = getline(&lineptr, &n, stdin);
 		if (read == -1)
                 {
                         break;
                 }
-                tok = strtok(lineptr, " \t\n\r");
+		tok = strtok(lineptr, " \t\n\r");
                 i = 0;
                 while (i < 16 && tok != NULL)
                 {
@@ -48,7 +49,6 @@ int main(void)
                         wait(&status);
                 }
         }
-        printf("\n");
         free(lineptr);
         exit(status);
 }
