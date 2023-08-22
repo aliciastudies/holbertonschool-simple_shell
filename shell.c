@@ -5,24 +5,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-char *user_getline(void)
-{
-	char *buf;
-	size_t bufsize;
-	ssize_t getline_return;
-
-	buf = NULL;
-	bufsize = 0;
-
-	getline_return = getline(&buf, &bufsize, stdin);
-	if ((getline_return = EOF))
-	{
-		free(buf);
-		return (NULL);
-	}
-	return (buf);
-}
-
 int main(void)
 {
         pid_t child;
@@ -37,16 +19,16 @@ int main(void)
 		{
 			printf("$ ");
 		}
-		read = user_getline();
-		if (read == NULL)
+		read = getline(&lineptr, &n, stdin);
+		if (read == -1)
                 {
-                        return (0);
+                        break;
                 }
 		tok = strtok(lineptr, " \t\n\r");
                 i = 0;
                 while (i < 16 && tok != NULL)
                 {
-                        command[i] = tok;
+                        command[i] = strdup(tok);
                         tok = strtok(NULL, " \t\n\r");
                         i = i + 1;
                 }
