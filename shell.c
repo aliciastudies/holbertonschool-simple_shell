@@ -1,15 +1,11 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <string.h>
-#include <stdlib.h>
+#include "main.h"
 
 int main(void)
 {
         pid_t child;
         char *command[16], *tok, *lineptr = NULL;
-        size_t i;
+	char *filepath;
+	size_t i;
 	size_t n;
 	ssize_t read;
         int status;
@@ -23,7 +19,8 @@ int main(void)
 		read = getline(&lineptr, &n, stdin);
 		if (read == -1)
                 {
-                        break;
+			free(lineptr);
+			break;
                 }
 		tok = strtok(lineptr, " \t\n\r");
                 i = 0;
@@ -36,17 +33,38 @@ int main(void)
                 command[i] = NULL;
                 child = fork();
                 if (child == 0)
-                {
-                        if (execve(command[0], command, NULL) == -1)
-                        {
-                                exit(EXIT_FAILURE);
-                        }
-                }
-                if (child > 0)
-                {
-                        wait(&status);
-                }
-        }
-        free(lineptr);
-        exit(status);
+		{
+			if (strchr(command[0], '/') != NULL)
+			{
+				if (execve(command[0], command, environ) == - 1)
+				{
+					perror("Error executing command");
+					exit(127);
+				}
+			}
+			else
+			{
+				filepath = find_executable_in_path(command[0]);
+				if (filepath != NULL)
+				{
+					if (execve(filepath, command, environ) == -1)
+					{
+						perror("Error executing");
+						exit(127);
+					}
+				}
+				else
+				{
+					printf("%s: command not found\n", command[0]);
+					return (-1);
+				}
+			}
+		}
+		if (child > 0)
+		{
+			wait(&status);
+		}
+	}
+	free(lineptr);
+	exit(status);
 }
