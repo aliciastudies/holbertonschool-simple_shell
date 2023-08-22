@@ -19,7 +19,6 @@ int main(void)
 		read = getline(&lineptr, &n, stdin);
 		if (read == -1)
                 {
-			free(lineptr);
 			break;
                 }
 		tok = strtok(lineptr, " \t\n\r");
