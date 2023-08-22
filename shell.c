@@ -11,12 +11,17 @@ int main(void)
         char *command[16], *tok, *lineptr = NULL;
         size_t i;
         size_t n;
+	ssize_t read;
         int status;
 
         while (1)
         {
-                printf("$ ");
-                if (getline(&lineptr, &n, stdin) == -1)
+		if (isatty(STDIN_FILENO) == 1)
+		{
+			printf("$ ");
+		}
+		read = getline(&lineptr, &n, stdin);
+		if (read == -1)
                 {
                         break;
                 }
@@ -47,4 +52,3 @@ int main(void)
         free(lineptr);
         exit(status);
 }
-
