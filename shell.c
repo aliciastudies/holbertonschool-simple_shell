@@ -20,7 +20,6 @@ int main(void)
 		{
 			printf("$ ");
 		}
-		fflush(stdin);
 		read = getline(&lineptr, &n, stdin);
 		if (read == -1)
                 {
