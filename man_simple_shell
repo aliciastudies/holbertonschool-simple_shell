@@ -1,0 +1,61 @@
+_HSH			User Simple Shell Manual			_HSH
+
+NAME
+	hsh - Simple UNIX shell
+
+SYNOPSIS
+	hsh
+
+DESCRIPTION
+       
+	HSH is a custom UNIX command line interpreter which built by C program.
+	It supports built-in commands "env" and "exit", custom commands within
+	the $PATH environment variables or existing path, and basic error handling
+	and alerting.
+
+Invocation
+	Simple shell can be run in both interactive and
+	non-interactive modes. 
+
+COMMANDS
+	Simple_shell supports below built-in commands:
+	
+	exit (status)
+	- Exit simple shell with speficied status.
+	- Success - 2
+
+	env
+	- Prints current environment variables.
+
+OPTIONS AND ARGUMENTS
+	The hsh command does not take any command line options or arguments.
+
+EXAMPLES
+	Interactive mode:
+	$ ./hsh
+	($) /bin/ls
+	hsh main.c shell.c
+
+	($) exit
+	$
+	
+	Non-interactive mode:
+	$ echo "/bin/ls" | ./hsh
+	hsh main.c shell.c test_ls_2
+	
+	$ cat test_ls_2 | ./hsh
+	hsh main.c shell.c test_ls_2
+	hsh main.c shell.c test_ls_2
+
+SEE ALSO
+       bash(1), sh(1)
+
+AUTHORS
+	Chelsey Chia, Alicia Tan and Jessica Mo
+
+REPORTING BUGS
+       Please report bugs to the Github repository:
+       https://github.com/aliciastudies/holbertonschool-simple_shell
+
+COPYRIGHT
+	This shell was created for educational purposes only.
