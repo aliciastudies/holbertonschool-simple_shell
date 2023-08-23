@@ -166,9 +166,9 @@ Once the process has been executed, there is no need to `exit` as the simple she
 
 | **User input** | **Expected output**|
 |------------|-----------------|
-|`echo "/bin/ls" | ./hsh` | Lists the contents of the current directory e.g. ``` hsh main.c shell.c ``` |
-|`echo "ls" | ./hsh` | Lists the contents of the current directory e.g. ``` hsh main.c shell.c ``` |
-|`echo "ls -l /tmp" | ./hsh`| <pre>-rw-r--r-- 1 root  root  2519 Jun 15 17:44 32 <br>|
+|`echo "/bin/ls" \| ./hsh` | Lists the contents of the current directory e.g. ``` hsh main.c shell.c ``` |
+|`echo "ls" \| ./hsh` | Lists the contents of the current directory e.g. ``` hsh main.c shell.c ``` |
+|`echo "ls -l /tmp" \| ./hsh`| <pre>-rw-r--r-- 1 root  root  2519 Jun 15 17:44 32 <br>|
 
 
 ## Authors
