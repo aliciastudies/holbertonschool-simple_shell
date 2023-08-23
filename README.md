@@ -42,16 +42,15 @@ This is a custom shell implementation designed to work similarly to the Thompson
 </details>
 
 ## Requirements
-
-+ <details>
-<summary>Ubuntu 20.04 LTS</summary>
 <ul>
-<li>[Windows 10 or 11](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support#1-overview)</li>
-<li>[Mac](https://ubuntu.com/download/desktop)</li>
+<li>Ubuntu 20.04 LTS</li>
+	<ul>
+<li><a href="https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support#1-overview">Windows 10 or 11</a></li>
+<li><a href="https://ubuntu.com/download/desktop">Mac</a></li>
+	</ul>
+<li>Follows the <a href="https://github.com/alx-tools/Betty/wiki">betty</a> linter <a href="https://github.com/hs-hq/Betty/blob/main/betty-style.pl">style</a> and <a href="https://github.com/hs-hq/Betty/blob/main/betty-doc.pl">documentation</a></li>
+<li>No more than 5 functions per file</li>
 </ul>
-</details>
-+ Follows the [betty](https://github.com/alx-tools/Betty/wiki) linter [style](https://github.com/hs-hq/Betty/blob/main/betty-style.pl) and [documentation](https://github.com/hs-hq/Betty/blob/main/betty-doc.pl)
-+ No more than 5 functions per file
 
 ## Repository Contents
 
@@ -81,14 +80,12 @@ To get a local copy up and running on your own machine, follow these simple step
 
 ```
 git clone https://github.com/aliciastudies/holbertonschool-simple_shell
-
 ```
 
 - Compile using the below:
 
 ```
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
-
 ```
 ### Manual page
 
@@ -96,12 +93,13 @@ Call the manual to read how the `simple shell` works:
 
 ```
 man ./man_simple_shell
-
 ```
 
 ## Usage
 
 ### Flowchart
+
+![flowchart](./flowchart.jpg)
 
 **Introduction**:
 This flowchart illustrates the steps involved in the simple shell, it outlines the steps used to determine if it's in interactive or non-interactive mode, if it's a valid command, built-in commands and executing the processes.
