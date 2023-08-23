@@ -1,7 +1,7 @@
 <h1 align="center"> Simple Shell </h1>
-<div align="center"> :turtle: </div>
-
----
+<div id="header" align="center">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Emoji_u1f422.svg/1200px-Emoji_u1f422.svg.png" alt="turtle" width="200"/>
+</div>
 
 ## About the project
 
@@ -59,7 +59,7 @@ This is a custom shell implementation designed to work similarly to the Thompson
 |`main.h`  | A header file containing the prototypes and the global variable `environ|
 |`shell.c` | A C program that contains the main function |
 |`find_path.c` | A C program that contains the functions `_getenv` and `find_executable_in_path` |
-|
+| ADD THE REST OF THE FILES HERE
 
 ## Features
 
@@ -128,7 +128,6 @@ To open the simple shell in the interactive mode type the below:
 
 ```
 ./hsh
-
 ```
 This will open the simple shell with a prompt `$` and allow the user to input commands. Example:
 
@@ -136,7 +135,6 @@ This will open the simple shell with a prompt `$` and allow the user to input co
 ./hsh
 
 $ _enter-your-command-here_
-
 ```
 Commands can then be entered after the `$` and run, if it is a known command, it will execute, otherwise, an error message will appear.
 
@@ -144,7 +142,6 @@ To close the simple shell:
 
 ```
 $ exit
-
 ```
 
 **Output Examples**
@@ -162,7 +159,6 @@ The simple shell does not need to be opened. Commands can be piped into the simp
 
 ```
 echo "/bin/ls" | ./hsh
-
 ```
 Once the process has been executed, there is no need to `exit` as the simple shell does not open in the non-interactive mode.
 
