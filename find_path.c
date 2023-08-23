@@ -31,8 +31,10 @@ char *find_executable_in_path(char *cmd)
 		if (stat(filepath, &st) == 0 && st.st_mode & S_IXUSR)
 		{
 			free(path);
-			dir = strtok(NULL, ":");
+			return (filepath);
 		}
+		free(filepath);
+		dir = strtok(NULL, ":");
 	}
 	free(path);
 	return (NULL);

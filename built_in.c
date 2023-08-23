@@ -25,7 +25,7 @@ int checkbuiltin(char **array, char **environ, char *str)
 	{
 		free(str);
 		free(array);
-		exit(0);
+		exit(EXIT_SUCCESS);
 	}
 	else if (strcmp(array[0], "env") == 0)
 	{
