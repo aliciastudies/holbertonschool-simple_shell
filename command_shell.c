@@ -1,4 +1,10 @@
 #include "main.h"
+/**
+ * get_input - function that read user input
+ * @buffer: a pointer to user input
+ * @bufsize: variable that holds the size of the allocated buffer
+ * @read: a variable to store user input
+ */
 
 void get_input(char **buffer, size_t *bufsize, ssize_t *read)
 {
@@ -18,6 +24,12 @@ void get_input(char **buffer, size_t *bufsize, ssize_t *read)
 	}
 }
 
+/**
+ * for_the_chile - fork to create child proecss and execute program
+ * @command: pointer to array that hold command
+ * @environm: a pointer to array that list environment variable name and value
+ * Return: exit status of the child process
+ */
 int fork_the_child(char **command, char **environ, char **str)
 {
 	pid_t child;
@@ -71,6 +83,12 @@ int fork_the_child(char **command, char **environ, char **str)
 	return (status);
 }
 
+/**
+ * line_to_array - function that split user input and store in array
+ * @str: a pointer to user input
+ * @command: a pointer to array that store tokenised user input
+ * Return: void
+ */
 void line_to_array(char *str, char **command)
 {
 	int i;
