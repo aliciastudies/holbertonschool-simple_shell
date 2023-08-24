@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * print_env - function that print the current environment
+ * @array: pointer to array that contains command
+ * Return: 0 on sucess
+ */
 int print_env(char **array)
 {
 	int i;
@@ -13,6 +18,13 @@ int print_env(char **array)
 	return (0);
 }
 
+/**
+ * checkbuiltin - function that check whether command passed is builtin command
+ * @array: a pointer to array that contains command to be checked
+ * @environ: a pointer to array that list environment variable name and value
+ * @str: a pointer to user input
+ * Return: 0 on success
+ */
 int checkbuiltin(char **array, char **environ, char *str)
 {
 	if (array[0] == NULL)
