@@ -15,7 +15,7 @@ This is a custom shell implementation designed to work similarly to the Thompson
 	<a href="#requirements">Requirements</a>
 	</li>
 	<li>
-	<a href="#respository-contents">Repository Contents</a>
+	<a href="#repository-contents">Repository Contents</a>
 	</li>
 	<li>
 	<a href="#features">Features</a>
@@ -58,8 +58,9 @@ This is a custom shell implementation designed to work similarly to the Thompson
 |----------|-----------------|
 |`main.h`  | A header file containing the prototypes and the global variable `environ|
 |`shell.c` | A C program that contains the main function |
+|`command_shell.c`| A C program that contains the functions `get_input`, `fork_the_child`, and `line_to_array`| 
 |`find_path.c` | A C program that contains the functions `_getenv` and `find_executable_in_path` |
-| ADD THE REST OF THE FILES HERE
+| `built_in.c`| A C program that contains the functions `print_env` and `checkbuiltin`|
 
 ## Features
 
