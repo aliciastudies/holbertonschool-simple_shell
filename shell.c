@@ -2,7 +2,7 @@
 
 /**
  * main - the entry point of simple UNIX command line interpreter
- * return - the value of exit_status that last command is executed 
+ * Return: the value of exit_status that last command is executed
  */
 int main(void)
 {
@@ -14,8 +14,8 @@ int main(void)
 	char *str;
 	int built_in_checker;
 
-        while (1)
-        {
+	while (1)
+	{
 		buffer = NULL;
 		bufsize = 0;
 
