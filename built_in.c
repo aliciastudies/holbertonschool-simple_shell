@@ -1,6 +1,32 @@
 #include "main.h"
 
 /**
+ * line_to_array - function that split user input and store in array
+ * @str: a pointer to user input
+ * @command: a pointer to array that store tokenised user input
+ * Return: void
+ */
+
+void line_to_array(char *str, char **command)
+{
+	int i;
+	const char *delim;
+	char *token;
+
+	i = 0;
+	delim = " \t\n\r";
+	token = strtok(str, delim);
+
+	while (token != NULL)
+	{
+		command[i] = token;
+		token = strtok(NULL, delim);
+		i = i + 1;
+	}
+	command[i] = NULL;
+}
+
+/**
  * print_env - function that print the current environment
  * @array: pointer to array that contains command
  * Return: 0 on sucess

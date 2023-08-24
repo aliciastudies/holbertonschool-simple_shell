@@ -36,10 +36,18 @@ char *find_executable_in_path(char *cmd)
 	struct stat st;
 	char *path = strdup(_getenv("PATH"));
 	char *dir = strtok(path, ":");
+	char *filepath = NULL;
 
 	while (dir != NULL)
 	{
-		char *filepath = malloc(strlen(dir) + strlen(cmd) + 2);
+		filepath = malloc(strlen(dir) + strlen(cmd) + 2);
+
+		if (filepath == NULL)
+		{
+			perror("Memory allocation error");
+			free(path);
+			exit(EXIT_FAILURE);
+		}
 
 		sprintf(filepath, "%s/%s", dir, cmd);
 

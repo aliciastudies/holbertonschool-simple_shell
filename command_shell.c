@@ -25,17 +25,53 @@ void get_input(char **buffer, size_t *bufsize, ssize_t *read)
 }
 
 /**
- * for_the_chile - fork to create child proecss and execute program
- * @command: pointer to array that hold command
- * @environm: a pointer to array that list environment variable name and value
+ * handle_error - handles error codes
+ * @command: a pointer to array that holds command
+ * @str: a pointer to the user input string
+ * @error: a pointer to array that holds the error emssage displayed
+ * Return: void
+ */
+
+void handle_error(char **command, char **str, char *error)
+{
+	perror(error);
+	free(command);
+	free(*str);
+}
+
+/**
+ * execute_command - executes a command
+ * @command: a pointer to array that holds the command
+ * @environ: a pointer to array that lists environ vars to be executed
+ * @str: a pointer to the user input string
+ * @fpath: a pointer to path fo the executable file to be executed
+ * Return: void
+ */
+void execute_command(char **command, char **environ, char **str, char *fpath)
+{
+
+	if (execve(fpath, command, environ) == -1)
+	{
+		handle_error(command, str, "Error executing command");
+		exit(EXIT_FAILURE);
+	}
+}
+
+/**
+ * fork_the_child - fork to create child process and execute program
+ * @command: a pointer to array that hold command
+ * @environ: a pointer to array that list environment variable name and value
+ * @str: a pointer to the user input string
  * Return: exit status of the child process
  */
+
 int fork_the_child(char **command, char **environ, char **str)
 {
 	pid_t child;
-	char *filepath;
+	char *fpath;
 	int status;
 
+	fpath = find_executable_in_path(command[0]);
 	child = fork();
 
 	if (child == -1)
@@ -47,26 +83,13 @@ int fork_the_child(char **command, char **environ, char **str)
 	{
 		if (strchr(command[0], '/') != NULL)
 		{
-			if (execve(command[0], command, environ) == -1)
-			{
-				perror("Error executing command");
-				free(command);
-				free(*str);
-				exit(EXIT_FAILURE);
-			}
+			execute_command(command, environ, str, command[0]);
 		}
 		else
 		{
-			filepath = find_executable_in_path(command[0]);
-			if (filepath != NULL)
+			if (fpath != NULL)
 			{
-				if (execve(filepath, command, environ) == -1)
-				{
-					perror("Error executing command");
-					free(command);
-					free(*str);
-					exit(EXIT_FAILURE);
-				}
+				execute_command(command, environ, str, fpath);
 			}
 			else
 			{
@@ -81,29 +104,4 @@ int fork_the_child(char **command, char **environ, char **str)
 		wait(&status);
 	}
 	return (status);
-}
-
-/**
- * line_to_array - function that split user input and store in array
- * @str: a pointer to user input
- * @command: a pointer to array that store tokenised user input
- * Return: void
- */
-void line_to_array(char *str, char **command)
-{
-	int i;
-	const char *delim;
-	char *token;
-
-	i = 0;
-	delim = " \t\n\r";
-	token = strtok(str, delim);
-
-	while (token != NULL)
-	{
-		command[i] = token;
-		token = strtok(NULL, delim);
-		i = i + 1;
-	}
-	command[i] = NULL;
 }
