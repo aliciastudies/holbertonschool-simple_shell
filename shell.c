@@ -1,5 +1,9 @@
 #include "main.h"
 
+/**
+ * main - the entry point of simple UNIX command line interpreter
+ * return - the value of exit_status that last command is executed 
+ */
 int main(void)
 {
 	char *buffer;
@@ -29,6 +33,7 @@ int main(void)
 		{
 			continue;
 		}
+
 		exit_status = fork_the_child(command, environ, &str);
 
 		free(command);
