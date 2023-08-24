@@ -44,10 +44,27 @@ void handle_error(char **command, char **str, char *error)
  * @command: a pointer to array that holds the command
  * @environ: a pointer to array that lists environ vars to be executed
  * @str: a pointer to the user input string
+ * Return: void
+ */
+void execute_command(char **command, char **environ, char **str)
+{
+
+	if (execve(command[0], command, environ) == -1)
+	{
+		handle_error(command, str, "Error executing command");
+		exit(EXIT_FAILURE);
+	}
+}
+/**
+ * execute_fpath - executes a executable file
+ * @command: a pointer to array that holds the command
+ * @environ: a pointer to array that lists environ vars to be executed
+ * @str: a pointer to the user input string
  * @fpath: a pointer to path fo the executable file to be executed
  * Return: void
  */
-void execute_command(char **command, char **environ, char **str, char *fpath)
+
+void execute_fpath(char **command, char **environ, char **str, char *fpath)
 {
 
 	if (execve(fpath, command, environ) == -1)
@@ -83,13 +100,13 @@ int fork_the_child(char **command, char **environ, char **str)
 	{
 		if (strchr(command[0], '/') != NULL)
 		{
-			execute_command(command, environ, str, command[0]);
+			execute_command(command, environ, str);
 		}
 		else
 		{
 			if (fpath != NULL)
 			{
-				execute_command(command, environ, str, fpath);
+				execute_fpath(command, environ, str, fpath);
 			}
 			else
 			{
