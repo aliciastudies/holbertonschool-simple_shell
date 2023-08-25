@@ -4,6 +4,8 @@
  * @buffer: a pointer to user input
  * @bufsize: variable that holds the size of the allocated buffer
  * @read: a variable to store user input
+ *
+ * Return: void
  */
 
 void get_input(char **buffer, size_t *bufsize, ssize_t *read)
@@ -29,6 +31,8 @@ void get_input(char **buffer, size_t *bufsize, ssize_t *read)
  * @command: a pointer to array that hold command
  * @environ: a pointer to array that list environment variable name and value
  * @str: a pointer to the user input string
+ * @status: the status of the process
+ *
  * Return: exit status of the child process
  */
 
