@@ -56,11 +56,11 @@ This is a custom shell implementation designed to work similarly to the Thompson
 
 | **File** | **Description** |
 |----------|-----------------|
-|`main.h`  | A header file containing the prototypes and the global variable `environ|
+|`main.h`  | A header file containing the prototypes and the global variable `environ` |
 |`shell.c` | A C program that contains the main function |
-|`command_shell.c`| A C program that contains the functions `get_input`, `fork_the_child`, and `line_to_array`| 
-|`find_path.c` | A C program that contains the functions `_getenv` and `find_executable_in_path` |
-| `built_in.c`| A C program that contains the functions `print_env` and `checkbuiltin`|
+|`command_shell.c`| A C program that contains the functions `get_input`, `fork_the_child`, `line_to_array`, and `executable_cmd` | 
+|`find_path.c` | A C program that contains the functions `_getenv`, `find_executable_in_path`, `string_into_words`, and `get_exe_string` |
+| `built_in.c`| A C program that contains the functions `print_env`, `checkbuiltin`, `_opendir`, and `_readdir` |
 
 ## Features
 
