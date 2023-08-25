@@ -23,9 +23,10 @@ int print_env(char **array)
  * @array: a pointer to array that contains command to be checked
  * @environ: a pointer to array that list environment variable name and value
  * @str: a pointer to user input
+ * @status: a pointer to a variable that stores the exit status of the shell
  * Return: 0 on success
  */
-int checkbuiltin(char **array, char **environ, char *str)
+int checkbuiltin(char **array, char **environ, char *str, int *status)
 {
 	if (array[0] == NULL)
 	{
